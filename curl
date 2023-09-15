@@ -1,0 +1,32 @@
+# Создать запись (заметку)
+curl -X POST -H "Content-Type: application/json" -d '{"title": "Новая заметка", "content": "Содержание заметки", "userID": 1}' http://localhost:8080/api/notes
+
+# Получить запись (заметку) по ее ID (замените {noteID} на фактический идентификатор заметки)
+curl http://localhost:8080/api/notes/{noteID}
+
+# Обновить запись (заметку) по ее ID (замените {noteID} на фактический идентификатор заметки)
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Обновленная заметка", "content": "Обновленное содержание заметки", "userID": 1}' http://localhost:8080/api/notes/{noteID}
+
+# Удалить запись (заметку) по ее ID (замените {noteID} на фактический идентификатор заметки)
+curl -X DELETE http://localhost:8080/api/notes/{noteID}
+
+# Получить все заметки для определенного пользователя (замените {userID} на фактический идентификатор пользователя)
+curl http://localhost:8080/api/notes?userID={userID}
+
+# Создать пользователя
+curl -X POST -H "Content-Type: application/json" -d '{"username": "новый_пользователь", "password": "пароль"}' http://localhost:8080/api/users
+
+# Получить пользователя по его ID (замените {userID} на фактический идентификатор пользователя)
+curl http://localhost:8080/api/users/{userID}
+
+# Получить пользователя по его имени (замените {username} на фактическое имя пользователя)
+curl http://localhost:8080/api/users/{username}
+
+# Обновить пользователя по его ID (замените {userID} на фактический идентификатор пользователя)
+curl -X PUT -H "Content-Type: application/json" -d '{"username": "новое_имя", "password": "новый_пароль"}' http://localhost:8080/api/users/{userID}
+
+# Удалить пользователя по его ID (замените {userID} на фактический идентификатор пользователя)
+curl -X DELETE http://localhost:8080/api/users/{userID}
+
+# Аутентифицировать пользователя (вход)
+curl -X POST -H "Content-Type: application/json" -d '{"username": "ваше_имя", "password": "ваш_пароль"}' http://localhost:8080/api/authenticate
