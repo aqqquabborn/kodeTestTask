@@ -150,24 +150,20 @@ func (h *NotesHandler) DeleteNote(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *NotesHandler) GetAllByUserID(w http.ResponseWriter, r *http.Request) {
-	// Получите строку токена из заголовка Authorization
 	tokenString := r.Header.Get("Authorization")
 
-	// Получите идентификатор текущего пользователя из токена
 	currentUserID, err := auth.GetCurrentUserIDFromToken(tokenString)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
 
-	// Получите все заметки текущего пользователя
 	notes, err := h.notesUsecase.GetAllByUserID(r.Context(), currentUserID)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	// Отправьте заметки в качестве ответа
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(notes)
 }

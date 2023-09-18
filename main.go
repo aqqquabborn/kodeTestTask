@@ -16,7 +16,6 @@ func main() {
 		log.Fatalf("Ошибка загрузки файла .env: %v", err)
 	}
 
-	// Используйте переменные окружения для подключения к базе данных
 	dbConnectionString := os.Getenv("DB_CONNECTION_STRING_MAIN")
 
 	db, err := sql.Open("postgres", dbConnectionString)
