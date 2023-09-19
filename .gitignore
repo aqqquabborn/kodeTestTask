@@ -1,2 +1,4 @@
-.env
-.yaml
+*.env
+*.yaml
+*.exe
+*.out
